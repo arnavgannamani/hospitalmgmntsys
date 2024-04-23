@@ -155,3 +155,4 @@ def get_all_categories():
         json_data.append(dict(zip(column_headers, row)))
     
     return jsonify(json_data)
+
