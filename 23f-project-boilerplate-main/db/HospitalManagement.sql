@@ -13,8 +13,9 @@ CREATE TABLE Person (
     personID INT PRIMARY KEY,
     firstName VARCHAR(255),
     lastName VARCHAR(255),
-    insurance VARCHAR(255),
+    insurance INT,
     tel_number VARCHAR(20)
+    FOREIGN KEY insurance REFERENCES insurance(insuranceID)
 );
 
 CREATE TABLE Patient (
@@ -24,8 +25,8 @@ CREATE TABLE Patient (
     gender ENUM('Male', 'Female', 'Other'),
     tel_number VARCHAR(20),
     email VARCHAR(255),
-    insurance VARCHAR(255),
-    emergencyContact VARCHAR(255)
+    inxsurance VARCHAR(255),
+    emergencyContact INT
 );
 
 CREATE TABLE ChildPatient (
@@ -128,3 +129,41 @@ CREATE TABLE DepartmentFinancials (
     expenditures DECIMAL(10, 2),
     FOREIGN KEY (departmentID) REFERENCES Department(departmentID)
 );
+ALTER TABLE ChildPatient DROP FOREIGN KEY FK_ChildPatient_Patient;
+ALTER TABLE ChildPatient ADD CONSTRAINT FK_ChildPatient_Patient FOREIGN KEY (patientID) REFERENCES Patient(patientID) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE Doctor DROP FOREIGN KEY doctor_ibfk_1;
+ALTER TABLE Doctor ADD CONSTRAINT FK_Doctor_Faculty FOREIGN KEY (employeeID) REFERENCES Faculty(employeeID) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+
+ALTER TABLE Appointment DROP FOREIGN KEY appointment_ibfk_1;
+ALTER TABLE Appointment ADD CONSTRAINT FK_Appointment_Person FOREIGN KEY (pid) REFERENCES Person(personID) ON DELETE SET NULL ON UPDATE CASCADE;
+
+ALTER TABLE Appointment DROP FOREIGN KEY appointment_ibfk_2;
+ALTER TABLE Appointment ADD CONSTRAINT FK_Appointment_Doctor FOREIGN KEY (doctorID) REFERENCES Doctor(employeeID) ON DELETE SET NULL ON UPDATE CASCADE;
+
+ALTER TABLE ExamResult DROP FOREIGN KEY examresult_ibfk_1;
+ALTER TABLE ExamResult ADD CONSTRAINT FK_ExamResult_Exam FOREIGN KEY (examID) REFERENCES Exam(examID) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE ExamResult DROP FOREIGN KEY examresult_ibfk_3;
+ALTER TABLE ExamResult ADD CONSTRAINT FK_ExamResult_Doctor FOREIGN KEY (doctorID) REFERENCES Faculty(employeeID) ON DELETE SET NULL ON UPDATE CASCADE;
+
+ALTER TABLE DepartmentItem DROP FOREIGN KEY departmentitem_ibfk_1;
+ALTER TABLE DepartmentItem ADD CONSTRAINT FK_DepartmentItem_Item FOREIGN KEY (itemID) REFERENCES Item(itemID) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE DepartmentItem DROP FOREIGN KEY departmentitem_ibfk_2;
+ALTER TABLE DepartmentItem ADD CONSTRAINT FK_DepartmentItem_Department FOREIGN KEY (departmentID) REFERENCES Department(departmentID) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE DepartmentFinancials DROP FOREIGN KEY departmentfinancials_ibfk_1;
+ALTER TABLE DepartmentFinancials ADD CONSTRAINT FK_DepartmentFinancials_Department FOREIGN KEY (departmentID) REFERENCES Department(departmentID) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE Bill DROP FOREIGN KEY bill_ibfk_1;
+ALTER TABLE Bill ADD CONSTRAINT FK_Bill_Patient FOREIGN KEY (patientID) REFERENCES Patient(patientID) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE Bill DROP FOREIGN KEY bill_ibfk_2;
+ALTER TABLE Bill ADD CONSTRAINT FK_Bill_Appointment FOREIGN KEY (appointmentID) REFERENCES Appointment(apptID) ON DELETE SET NULL ON UPDATE CASCADE;
+
+ALTER TABLE Person DROP FOREIGN KEY FK_Person_Insurance;
+ALTER TABLE Person ADD CONSTRAINT FK_Person_Insurance FOREIGN KEY (insuranceID) REFERENCES Insurance(insuranceID) ON DELETE SET NULL ON UPDATE CASCADE;
+

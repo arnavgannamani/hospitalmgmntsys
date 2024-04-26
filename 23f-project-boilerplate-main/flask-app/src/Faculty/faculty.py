@@ -14,10 +14,10 @@ def get_all_faculties():
     return make_response(jsonify(json_data), 200)
 
 # Get a single faculty by id
-@faculty.route('/faculty/<int:faculty_id>', methods=['GET'])
-def get_faculty(faculty_id):
+@faculty.route('/faculty/<int:employeeID>', methods=['GET'])
+def get_faculty(employeeID):
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT * FROM faculty WHERE id = %s', (faculty_id,))
+    cursor.execute('SELECT * FROM faculty WHERE id = %s', (employeeID,))
     row_headers = [x[0] for x in cursor.description]
     faculty = cursor.fetchone()
     if faculty:
@@ -36,20 +36,20 @@ def create_faculty():
     return make_response(jsonify({"message": "Faculty created successfully"}), 201)
 
 # Update a faculty
-@faculty.route('/faculty/<int:faculty_id>', methods=['PUT'])
-def update_faculty(faculty_id):
+@faculty.route('/faculty/<int:employeeID>', methods=['PUT'])
+def update_faculty(employeeID):
     data = request.get_json()
     cursor = db.get_db().cursor()
     cursor.execute('UPDATE faculty SET name = %s, department = %s WHERE id = %s',
-                   (data['name'], data['department'], faculty_id))
+                   (data['name'], data['department'], employeeID))
     db.get_db().commit()
     return make_response(jsonify({"message": "Faculty updated successfully"}), 200)
 
 # Delete a faculty
-@faculty.route('/faculty/<int:faculty_id>', methods=['DELETE'])
-def delete_faculty(faculty_id):
+@faculty.route('/faculty/<int:employeeID>', methods=['DELETE'])
+def delete_faculty(employeeID):
     cursor = db.get_db().cursor()
-    cursor.execute('DELETE FROM faculty WHERE id = %s', (faculty_id,))
+    cursor.execute('DELETE FROM faculty WHERE id = %s', (employeeID,))
     db.get_db().commit()
     return make_response(jsonify({"message": "Faculty deleted successfully"}), 200)
 
