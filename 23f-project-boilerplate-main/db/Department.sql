@@ -1,0 +1,12 @@
+insert into Department (departmentID, departmentName, supervisor) values (1, 'Pediatrics', 60);
+insert into Department (departmentID, departmentName, supervisor) values (2, 'Cardiology', 25);
+insert into Department (departmentID, departmentName, supervisor) values (3, 'Obstetrics and Gynecology', 32);
+insert into Department (departmentID, departmentName, supervisor) values (4, 'Emergency Medicine', 22);
+insert into Department (departmentID, departmentName, supervisor) values (5, 'Psychiatry', 39);
+insert into Department (departmentID, departmentName, supervisor) values (6, 'Surgery', 8);
+insert into Department (departmentID, departmentName, supervisor) values (7, 'Orthopedics', 26);
+insert into Department (departmentID, departmentName, supervisor) values (8, 'Neurology', 31);
+insert into Department (departmentID, departmentName, supervisor) values (9, 'Internal Medicine', 16);
+insert into Department (departmentID, departmentName, supervisor) values (10, 'Dermatology', 11);
+insert into Department (departmentID, departmentName, supervisor) values (11, 'Radiology', 27);
+insert into Department (departmentID, departmentName, supervisor) values (12, 'Oncology', 40);

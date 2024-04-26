@@ -1,0 +1,12 @@
+insert into DepartmentFinancials (departmentFinancialsID, departmentID, budget, expenditures) values (1, 11, 2666264.56, 1680049.59);
+insert into DepartmentFinancials (departmentFinancialsID, departmentID, budget, expenditures) values (2, 4, 512714.66, 365094.58);
+insert into DepartmentFinancials (departmentFinancialsID, departmentID, budget, expenditures) values (3, 1, 1851879.37, 755313.62);
+insert into DepartmentFinancials (departmentFinancialsID, departmentID, budget, expenditures) values (4, 6, 1635599.84, 1466720.16);
+insert into DepartmentFinancials (departmentFinancialsID, departmentID, budget, expenditures) values (5, 1, 1109448.32, 1093658.26);
+insert into DepartmentFinancials (departmentFinancialsID, departmentID, budget, expenditures) values (6, 1, 3625732.1, 2596139.53);
+insert into DepartmentFinancials (departmentFinancialsID, departmentID, budget, expenditures) values (7, 2, 3675767.4, 3532047.75);
+insert into DepartmentFinancials (departmentFinancialsID, departmentID, budget, expenditures) values (8, 4, 1557456.7, 1280981.48);
+insert into DepartmentFinancials (departmentFinancialsID, departmentID, budget, expenditures) values (9, 6, 3871077.65, 3076235.38);
+insert into DepartmentFinancials (departmentFinancialsID, departmentID, budget, expenditures) values (10, 12, 1144727.74, 1034407.0);
+insert into DepartmentFinancials (departmentFinancialsID, departmentID, budget, expenditures) values (11, 6, 2457127.26, 2226977.23);
+insert into DepartmentFinancials (departmentFinancialsID, departmentID, budget, expenditures) values (12, 1, 3443225.69, 3076086.71);

@@ -1,3 +1,10 @@
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+
+USE `HospitalManagement`;
+
+
 insert into Faculty (employeeID, firstName, lastName, role, tel_number, department) values (1, 'Dita', 'Charke', 'Janitor', '645-829-8189', 12);
 insert into Faculty (employeeID, firstName, lastName, role, tel_number, department) values (2, 'Noach', 'Birbeck', 'Therapist', '586-523-6412', 7);
 insert into Faculty (employeeID, firstName, lastName, role, tel_number, department) values (3, 'Lezlie', 'Johncey', 'Radiologist', '606-306-4439', 6);
