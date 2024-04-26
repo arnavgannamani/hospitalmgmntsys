@@ -3,14 +3,14 @@ import json
 from src import db
 
 
-patient = Blueprint('patient', __name__)
+Patient = Blueprint('Patient', __name__)
 
-# Get all patient from the DB
-@patient.route('/patient', methods=['GET'])
-def get_patient():
+# Get all Patient from the DB
+@Patient.route('/Patient', methods=['GET'])
+def get_Patient():
     cursor = db.get_db().cursor()
     cursor.execute('select company, last_name,\
-        first_name, job_title, business_phone from patient')
+        first_name, job_title, business_phone from Patient')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -21,11 +21,11 @@ def get_patient():
     the_response.mimetype = 'application/json'
     return the_response
 
-# get one patient
-@patient.route('/patient/<patientID>', methods=['GET'])
-def get_customer(patientID):
+# get one Patient
+@Patient.route('/Patient/<PatientID>', methods=['GET'])
+def get_customer(PatientID):
     cursor = db.get_db().cursor()
-    cursor.execute('select * from customers where id = {0}'.format(patientID))
+    cursor.execute('select * from customers where id = {0}'.format(PatientID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -36,7 +36,7 @@ def get_customer(patientID):
     the_response.mimetype = 'application/json'
     return the_response
 
-@patient.route('/product', methods=['POST'])
+@Patient.route('/product', methods=['POST'])
 def add_new_product():
     
     # collecting data from the request object 
@@ -70,8 +70,8 @@ def add_new_product():
     db.get_db().commit()
     
     return 'Success!'
-@patient.route('/patient/patientID>', methods=['PUT'])
-def update_patient(patientID):
+@Patient.route('/Patient/PatientID>', methods=['PUT'])
+def update_Patient(PatientID):
     # Collecting data from the request object 
     the_data = request.json
     current_app.logger.info(the_data)
@@ -86,7 +86,7 @@ def update_patient(patientID):
     emergencyContact = the_data.get('emergencyContact')
 
     # Constructing the query
-    query = 'UPDATE patient SET '
+    query = 'UPDATE Patient SET '
     query += 'firstName = "{}", '.format(firstName) if firstName else ''
     query += 'lastName = "{}", '.format(lastName) if lastName else ''
     query += 'gender = "{}", '.format(gender) if gender else ''
@@ -99,7 +99,7 @@ def update_patient(patientID):
     query = query.rstrip(', ')
     
     # Adding the WHERE clause
-    query += ' WHERE id = {}'.format(patientID)
+    query += ' WHERE id = {}'.format(PatientID)
 
     current_app.logger.info(query)
 
